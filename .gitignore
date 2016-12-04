@@ -1,0 +1,11 @@
+database/node_modules
+database/public
+database/.tmp
+database/.sass-cache
+database/.idea
+database/client/bower_components
+database/client/index.html
+database/dist
+database/server/config/local.env.js
+database/npm-debug.log
+database/coverage
