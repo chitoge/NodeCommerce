@@ -8,7 +8,7 @@ var ProductSchema = new mongoose.Schema({
   active: Boolean,
   title: { type: String, required: true, trim: true }, // means whitespace will be trimmed
   price: { type: Number, required: true, min: 0 },
-  stock: { type: Number, default: 1 },
+  stock: { type: Number, required: true, default: 1, min: 0 },
   description: String,
   imageUrl: String, // changed to self host static content delivery
   detailImageUrls: [String], // more images for display, but now frontend support is just 4 :(

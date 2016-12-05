@@ -2,9 +2,15 @@
   <!-- subcategory sidebar -->
   <div class="row">
     <div class="col-sm-4 col-md-3">
-      <h3>Danh mục mặt hàng</h3>
+      <div ng-show="$ctrl.subcategories.length">
+        <h4>Danh mục con</h4>
+        <div class="list-group">
+          <a ng-repeat="category in $ctrl.subcategories" ng-href="{{category.link}}" class="list-group-item" ng-class="{active: $ctrl.isActive(category.link)}">{{category.name}}</a>
+        </div>
+      </div>
+      <h4>Danh mục mặt hàng</h4>
       <div class="list-group">
-        <a ng-repeat="category in $ctrl.subcategories" ng-href="{{category.link}}" class="list-group-item">{{category.title}}</a>
+        <a ng-repeat="category in $ctrl.categories" ng-href="{{category.link}}" class="list-group-item" ng-class="{active: $ctrl.isActive(category.link)}">{{category.name}}</a>
       </div>
     </div>
     <!-- current scope products -->

@@ -56,6 +56,16 @@ function handleEntityNotFound(res) {
   };
 }
 
+function createCartForUser(req, res) {
+  return function(entity) {
+    if(!entity) {
+      var user = req.user;
+      return Cart.create({name: user.name, active: true, user: user._id});
+    }
+    return entity;
+  };
+}
+
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
   return function(err) {
@@ -74,6 +84,16 @@ export function index(req, res) {
 export function show(req, res) {
   return Cart.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a single Cart associated with currently authenticated user
+export function showUser(req, res) {
+  var userId = req.user._id;
+
+  return Cart.findOne({user: userId}).exec()
+    .then(createCartForUser(req, res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -101,9 +121,23 @@ export function patch(req, res) {
   if(req.body._id) {
     delete req.body._id;
   }
+  if(req.body.total) {
+    delete req.body.total;
+  }
   return Cart.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(patchUpdates(req.body))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Updates an existing Cart in the DB
+export function clearCart(req, res) {
+  var userId = req.user._id;
+
+  return Cart.findOne({user: userId}).exec()
+    .then(createCartForUser(res))
+    .then(patchUpdates('{items: [], total: 0, active: true}'))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

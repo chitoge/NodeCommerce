@@ -16,17 +16,13 @@ var CheckoutSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   shippingAddress: String,
   billingAddress: String,
+  phoneNumber: String,
   // price details
   items: [OrderDetailsSchema],
-  shipping: {type: Number, default: 0.0},
-  tax: {type: Number, default: 0.0},
-  discount: {type: Number, default: 0.0},
-  subTotal: {type: Number},
   total: {type: Number, required: true},
   // payment info
   status: { type: String, default: 'pending' }, // pending, paid/failed, delivered, canceled, refunded.
-  paymentType: { type: String, default: 'cod' }, // cash on delivery
-  paymentStatus: mongoose.Schema.Types.Mixed
+  paymentType: { type: String, default: 'cod' } // cash on delivery
 });
 
 export default mongoose.model('Checkout', CheckoutSchema);
