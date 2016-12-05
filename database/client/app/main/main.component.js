@@ -17,6 +17,7 @@ export class MainController {
     this.$http.get('/api/things')
       .then(response => {
         this.awesomeThings = response.data;
+        console.log(this.awesomeThings);
       });
   }
 

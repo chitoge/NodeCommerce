@@ -1,0 +1,58 @@
+<div class="container">
+  <!-- product summary -->
+  <div class="container">
+    <div class="row">
+      <!-- thumbnail & preview stuffs -->
+      <div class="col-sm-6">
+        <img class="img-responsive" src="{{product.imageUrl}}" alt="" />
+        <div class="thumbnails row">
+          <div class="col-xs-3">
+            <a href="#"><img src="http://placehold.it/750x600" alt="" class="img-thumbnail img-responsive" /></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="#"><img src="http://placehold.it/750x600" alt="" class="img-thumbnail img-responsive" /></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="#"><img src="http://placehold.it/750x600" alt="" class="img-thumbnail img-responsive" /></a>
+          </div>
+          <div class="col-xs-3">
+            <a href="#"><img src="http://placehold.it/750x600" alt="" class="img-thumbnail img-responsive" /></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- product description -->
+      <div class="col-sm-6">
+        <h4 class="pull-right">{{product.price | number}} đ</h4>
+        <h4><a href="#">{{product.name}}</a></h4>
+        <p>{{product.summary}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- product details -->
+  <hr />
+  <div class="description">
+    <p>
+    {{product.description}}
+    </p>
+
+  </div>
+  <div class="ratings">
+    <p class="pull-right">3 nhận xét</p>
+    <p>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star"></span>
+      <span class="glyphicon glyphicon-star-empty"></span>
+      4.0 sao
+    </p>
+  </div>
+  <div class="well">
+    <div class="text-right">
+      <a class="btn btn-success">Để lại nhận xét</a>
+    </div>
+  </div>
+  <!-- customer reviews -->
+</div>

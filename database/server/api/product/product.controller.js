@@ -8,6 +8,8 @@
  * DELETE  /api/products/:id          ->  destroy
  */
 
+// TODO: propagate category info up
+
 'use strict';
 
 import jsonpatch from 'fast-json-patch';
@@ -63,16 +65,30 @@ function handleError(res, statusCode) {
   };
 }
 
+// Gets a list of Products, including inactive products
+export function indexAll(req, res) {
+  return Product.find().exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a list of Products
 export function index(req, res) {
-  return Product.find().exec()
+  return Product.find({active: true}, '-active').exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a list of Products by category
+export function indexByCategory(req, res) {
+  return Product.find({categories: req.params.id, active: true}, '-active').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Product from the DB
 export function show(req, res) {
-  return Product.findById(req.params.id).exec()
+  return Product.findById(req.params.id, '-active').exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

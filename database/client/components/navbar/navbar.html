@@ -11,6 +11,15 @@
     </div>
     <div uib-collapse="$ctrl.isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
+        <li class="dropdown" uib-dropdown is-open="status.isopen">
+          <a href="#" id="dropdown-toggler" class="active dropdown-toggle" uib-dropdown-toggle ng-disabled="disabled">Danh mục
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="dropdown-toggler">
+            <li ng-repeat="item in $ctrl.categories" ng-class="{active: $ctrl.isActive(item.link)}">
+              <a ng-href="{{item.link}}">{{item.name}}</a>
+            </li>
+          </ul>
+        </li>
         <li ng-repeat="item in $ctrl.menu" ng-class="{active: $ctrl.isActive(item.link)}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
