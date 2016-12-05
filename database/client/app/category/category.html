@@ -10,18 +10,18 @@
     <!-- current scope products -->
     <div class="col-sm-8 col-md-9">
       <div class="row">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4" ng-repeat="product in $ctrl.products">
           <div class="thumbnail">
-            <img src="//placehold.it/750x600" alt="">
+            <img src="{{product.imageUrl}}" alt="">
             <div class="add-to-cart">
               <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"></a>
             </div>
             <div class="caption">
-              <h4 class="pull-right">600.000đ</h4>
-              <h4><a ng-href="/product">1<sub>st</sub> Product</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+              <h4 class="pull-right">{{product.price | number}} đ</h4>
+              <h4><a ng-href="{{product.link}}">{{product.name}}</a></h4>
+              <p>{{product.summary}}</p>
               <div class="ratings">
-                <p class="pull-right"><a href="/product#comments">15 đánh giá</a></p>
+                <p class="pull-right"><a href="{{product.link}}#comments">15 đánh giá</a></p>
                 <p>
                   <span class="glyphicon glyphicon-star"></span>
                   <span class="glyphicon glyphicon-star"></span>
@@ -33,98 +33,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="//placehold.it/750x600" alt="">
-            <div class="add-to-cart">
-              <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"></a>
-            </div>
-            <div class="caption">
-              <h4 class="pull-right">600.000đ</h4>
-              <h4><a ng-href="/product">1<sub>st</sub> Product</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <div class="ratings">
-                <p class="pull-right"><a href="/product#comments">15 đánh giá</a></p>
-                <p>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="//placehold.it/750x600" alt="">
-            <div class="add-to-cart">
-              <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"></a>
-            </div>
-            <div class="caption">
-              <h4 class="pull-right">600.000đ</h4>
-              <h4><a ng-href="/product">1<sub>st</sub> Product</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <div class="ratings">
-                <p class="pull-right"><a href="/product#comments">15 đánh giá</a></p>
-                <p>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="//placehold.it/750x600" alt="">
-            <div class="add-to-cart">
-              <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"></a>
-            </div>
-            <div class="caption">
-              <h4 class="pull-right">600.000đ</h4>
-              <h4><a ng-href="/product">1<sub>st</sub> Product</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <div class="ratings">
-                <p class="pull-right"><a href="/product#comments">15 đánh giá</a></p>
-                <p>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="//placehold.it/750x600" alt="">
-            <div class="add-to-cart">
-              <a href="#" class="glyphicon glyphicon-plus-sign" data-toggle="tooltip" data-placement="top" title="Thêm vào giỏ hàng"></a>
-            </div>
-            <div class="caption">
-              <h4 class="pull-right">600.000đ</h4>
-              <h4><a ng-href="/product">1<sub>st</sub> Product</a></h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-              <div class="ratings">
-                <p class="pull-right"><a href="/product#comments">15 đánh giá</a></p>
-                <p>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                  <span class="glyphicon glyphicon-star"></span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
 

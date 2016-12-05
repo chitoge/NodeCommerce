@@ -11,8 +11,8 @@ var CartDetailsSchema = new mongoose.Schema({
 var CartSchema = new mongoose.Schema({
   name: String,
   info: String,
-  active: Boolean,
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  active: Boolean, // will be inactive after checkout / stuff
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' , required: true},
   items: [CartDetailsSchema],
   total: {type: Number, required: true}
 });

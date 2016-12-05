@@ -6,44 +6,31 @@ import routes from './category.routes';
 
 export class CategoryComponent {
   // subcategory API call
-  subcategories = [{
-    title: 'Quần áo & Phụ kiện thời trang',
-    link: '/'
-  },
-  {
-    title: 'Đồ dùng cho bé',
-    link: '/'
-  },
-  {
-    title: 'Làm đẹp & Sức khỏe',
-    link: '/'
-  },
-  {
-    title: 'Điện máy',
-    link: '/'
-  },
-  {
-    title: 'Nội thất',
-    link: '/'
-  },
-  {
-    title: 'Điện thoại',
-    link: '/'
-  },
-  {
-    title: 'Sách',
-    link: '/'
-  }];
+  subcategories = [];
+  products = [];
 
   // and also query real products here
 
+  $http;
   $location;
 
   /*@ngInject*/
-  constructor($location) {
+  constructor($http, $location, $routeParams) {
     'ngInject';
 
+    this.$http = $http;
     this.$location = $location;
+
+    // resolve products linked to this current category
+    this.$http.get('/api/products/by-category/' + $routeParams.id)
+      .then(response => {
+        this.products = response.data;
+
+        // populate product .link field
+        for (var product in this.products) {
+          this.products[product]['link'] = '/product/' + this.products[product]._id;
+        }
+      });
   }
 
   isActive(route) {

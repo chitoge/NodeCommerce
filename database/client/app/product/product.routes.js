@@ -3,7 +3,7 @@
 export default function($routeProvider) {
   'ngInject';
   $routeProvider
-    .when('/product', {
+    .when('/product/:id', {
       template: '<product></product>'
     });
 }

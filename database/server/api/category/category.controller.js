@@ -63,17 +63,32 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Categorys
-export function index(req, res) {
+// Gets a list of top-level Categories
+export function indexAll(req, res) {
   return Category.find().exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
+// Gets a list of top-level Categories
+export function index(req, res) {
+  return Category.find({parent: {$exists: false}, active: true}, '-active').exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Category from the DB
+// note: might leak inactive categories if brute-forced, but this should be insignificant
 export function show(req, res) {
-  return Category.findById(req.params.id).exec()
+  return Category.findById(req.params.id, '-active').exec()
     .then(handleEntityNotFound(res))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+// Gets a children list of a category from the DB
+export function indexChildren(req, res) {
+  return Category.find({parent: req.params.id, active: true}, '-active').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

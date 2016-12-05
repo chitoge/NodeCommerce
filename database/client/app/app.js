@@ -1,7 +1,7 @@
 'use strict';
 
 import angular from 'angular';
-// import ngAnimate from 'angular-animate';
+import ngAnimate from 'angular-animate';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
 import ngSanitize from 'angular-sanitize';
@@ -25,11 +25,16 @@ import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
+import CartComponent from './cart/cart.component';
+import CategoryComponent from './category/category.component';
+import ProductComponent from './product/product.component';
+import ProfileComponent from './profile/profile.component';
 
 import './app.scss';
 
-angular.module('nodeCommerceApp', [ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap, _Auth,
-    account, admin, navbar, footer, main, constants, util
+angular.module('nodeCommerceApp', [ngAnimate, ngCookies, ngResource, ngSanitize, ngRoute, uiBootstrap, _Auth,
+    account, admin, navbar, footer, main, constants, util, CartComponent, CategoryComponent, ProductComponent,
+    ProfileComponent
   ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
